@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="APAutomation-Common-Java - Copy" />
+        <module name="APAutomation-Common-Java" />
+        <module name="Test-Common-Java" />
+        <module name="APIAutomation-Common-Java" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="APAutomation-Common-Java" options="--add-modules java.base" />
+      <module name="APIAutomation-Common-Java" options="--add-modules java.base,java.sql" />
+      <module name="Test-Common-Java" options="--add-modules java.base,java.sql" />
+    </option>
+  </component>
+</project>

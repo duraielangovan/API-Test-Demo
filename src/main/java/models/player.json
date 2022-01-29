@@ -1,0 +1,25 @@
+{
+  "players": [
+    {
+      "id" : 1,
+      "rank": 118,
+      "age": 56,
+      "firstName" : "Agassi",
+      "lastName" : "ANdrew"
+    },
+    {
+      "id" : 2,
+      "rank": 18,
+      "age": 42,
+      "firstName" : "Paes",
+      "lastName" : "Leander"
+    },
+    {
+      "id" : 3,
+      "rank": 2,
+      "age": 27,
+      "firstName" : "Ronaldo",
+      "lastName" : "King"
+    }
+  ]
+}
