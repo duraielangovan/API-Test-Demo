@@ -4,7 +4,21 @@ echo 'Stating the test'
 
 pipeline
 {
- agent any
+environment{
+    
+    JAVA_TOOL_OPTIONS = "-Duser.home = /var/maven"
+  }
+
+ agent {
+     
+     docker{
+         
+         image "docker pull adoptopenjdk/maven-openjdk13"
+         label "docker"
+         args "-v /tmp/maven:/var/maven/.m2 -e MAVEN_CONFIG=/var/maven/.m2"
+     }
+
+ }
 
  stages
  {
@@ -42,14 +56,13 @@ pipeline
      {
      	echo "Status of current build is ${currentBuild.result}"
      }     
-   }  
-   
+   }     
  }
  post {
      
      always{
          
-         cleanws()
+         cleanWs()
      }
  }
 
