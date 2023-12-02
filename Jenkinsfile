@@ -13,7 +13,7 @@ environment{
      
      docker{
          
-         image "docker pull adoptopenjdk/maven-openjdk13"
+         image "maven:3.8.7-openjdk-18"
          label "docker"
          args "-v /tmp/maven:/var/maven/.m2 -e MAVEN_CONFIG=/var/maven/.m2"
      }
@@ -27,8 +27,8 @@ environment{
      steps 
      {
      	echo "Build number ${env.BUILD_ID} is running  on ${env.JENKINS_URL}"
-     	bat "mvn -version"
-     	bat "mvn clean"
+     	sh "mvn -version"
+     	sh "mvn clean"
      }     
    }
    
@@ -46,7 +46,7 @@ environment{
     steps 
      {
      	echo "Test phase for the environment : ${params.TEST_ENV}"  
-     	bat "mvn install"	
+     	sh "mvn install"	
      }     
    }
    
