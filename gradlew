@@ -24,7 +24,7 @@ cd "$SAVED" > /dev/null
 APP_NAME="Gradle"
 APP_BASE_NAME=`basename "$0"`
 
-#APp default JVM options here
+#APP default JVM options here
 DEFAULT_JVM_OPTIONS='"-Xmx64m"'
 
 #maximum available set MAX_FD ! =-1 to use this

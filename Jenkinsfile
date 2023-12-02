@@ -6,7 +6,6 @@ pipeline
 {
  agent any
 
-
  stages
  {
    stage('build')
@@ -14,6 +13,8 @@ pipeline
      steps 
      {
      	echo "Build number ${env.BUILD_ID} is running  on ${env.JENKINS_URL}"
+     	bat "mvn -version"
+     	bat "mvn clean"
      }     
    }
    
@@ -24,13 +25,14 @@ pipeline
         expression
         {
             
-            params.TEST_ENV !='qa'
+            params.TEST_ENV !='prod'
         }
     }
 
     steps 
      {
-     	echo "Test phase for the environment : ${params.TEST_ENV}"  	
+     	echo "Test phase for the environment : ${params.TEST_ENV}"  
+     	bat "mvn install"	
      }     
    }
    
@@ -42,6 +44,13 @@ pipeline
      }     
    }  
    
+ }
+ post {
+     
+     always{
+         
+         cleanws()
+     }
  }
 
 }

@@ -2,7 +2,7 @@
 <suite name="Suite1" verbose="1" >
     <test name="playerTest" >
         <classes>
-            <class name="com.securonix.AWSServiceTest" />
+            <class name="com.soar.connectors.vmwarbonblack.AWSServiceTest"/>
         </classes>
     </test>
 </suite>

@@ -3,8 +3,6 @@ P
  src/main/java/models/player.json,a\6\a66bac12e8779a60d6f093e6ca0f2d11793c4ff9
 M
 src/main/java/models/Pet.java,6\d\6d48b15924b4c6488978148a4a3fa45a10b8d00d
->
-smoketests.yml,4\b\4bb24a0ee4e6cc8ae3e8004691d718b1614b31ff
 A
 gradle.properties,2\a\2afbb999f001938c88fa43fc2ef52abf0f8213e4
 <
@@ -81,8 +79,6 @@ _src/main/java/com/securonix/at/soar/connectors/VMwareCarbonblack/VMwareCarbonbl
 dsrc/main/java/com/securonix/at/soar/connectors/VMwareCarbonblack/VMwareCarbonBlackServiceClient.java,0\1\01fe02d37f0b49a6b772080b97e2ec37b935eb60
 š
 jsrc/main/java/com/securonix/at/soar/connectors/VMwareCarbonblack/VMwareCarbonblackVendorServiceClient.java,e\6\e669e463c2807c6bc214edc9cea0c6b49a2bb2c5
-7
-gradlew,5\b\5bbfa66edb4db3c7c33c5181f43510990d3307f9
 ^
 .src/main/java/com/securonix/at/TestConfig.java,8\8\88555d29fc2b22f9c43ee26d88a69338953183f5
 z

@@ -19,7 +19,6 @@
         <slf4j.version>1.7.33</slf4j.version>
         <restassured.version>4.4.0</restassured.version>
         <extentreports.version>5.0.8</extentreports.version>
-
     </properties>
     <dependencies>
         <dependency>
@@ -168,7 +167,6 @@
 
     </dependencies>
 
-
     <build>
         <testResources>
             <testResource>
@@ -193,10 +191,8 @@
                         <!--suppress UnresolvedMavenProperty -->
                         <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
-
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
