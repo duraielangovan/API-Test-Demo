@@ -14,7 +14,6 @@ environment{
      docker{
          
          image "maven:3.8.7-openjdk-18"
-         label "docker"
          args "-v /tmp/maven:/var/maven/.m2 -e MAVEN_CONFIG=/var/maven/.m2"
      }
 
