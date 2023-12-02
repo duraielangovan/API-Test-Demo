@@ -1,0 +1,3 @@
+p2p:
+  suite: 'smoke'
+  email: 'elango@veyyon.org','admin@veyyon.org'

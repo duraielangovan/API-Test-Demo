@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 public class KafkaUtil {
 
     public String getUniqueId(){
-        return "veyyon" + LocalDate.now().format(DateTimeFormatter
-                .ofPattern("yyyyMMddHHmmssSSS"));
+        return "securonix" + LocalDate.now().format(DateTimeFormatter
+                .ofPattern("yyyyMMddHHmmss"));
     }
 }

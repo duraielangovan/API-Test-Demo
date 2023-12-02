@@ -1,0 +1,132 @@
+build{
+    script{
+        repositories{
+            maven{
+                url 'maverepo/artifcatory'
+                credentials{
+                    username="${artifcatoryUser}"
+                    userpassword="${artifactoryPassword}"
+                }
+            }
+        }
+        dependencies {
+            classPath(build:'org.jfrog.bildinfo', name:'build-info-extractor-gradle' , version:'4.29.1')
+
+        }
+    }
+
+    all projects{
+        apply plugin : "com-jfrog-artifactory"
+        apply plugin: 'java-library'
+        apply plugin: 'maven-publish'
+
+        group 'org.jfrog.buildinfo'
+
+        repositories{
+            maven{
+                url 'maverepo/artifcatory'
+                credentials{
+                    username="${artifcatoryUser}"
+                    userpassword="${artifactoryPassword}"
+                }
+            }
+        }
+    }
+
+    configurations.all{
+        resolutionStrategy.cacheChagingModulesfor 0, 'seconds'
+    }
+dependencies{
+    implementation 'com.veyyonorg.at:TestAutomation-CommonKafka-Java'
+}
+    def artifcatoryPublishUser="noUser"
+    def artifcatoryPublishPassword="noUser"
+
+    if(project.hasProperty(artifcatoryPublishUser)){
+        artifcatoryPublishUser = project.property(artifcatoryPublishUser)
+    }
+
+    if(project.hasProperty(artifcatoryPublishPassword)){
+        artifcatoryPublishPassword = project.property(artifcatoryPublishPassword)
+    }
+
+    artifcatory{
+        contextUrl : "${artifactoryUrl}"
+        publish{
+            repository{
+                repoKey ='testautomation-maven-local'
+                username='artifcatoryPublishUser'
+                pasword='artifcatoryPublishPassword'
+                maven=true
+            }
+            defaults{
+                publications= 'mavenJaven'
+            }
+            publishArtifcats = true
+            publishBuildInfo = true
+            publishPom = true
+        }
+        clinetConfig.info.setbuildNumber(version)
+        resolve{
+            repository{
+                repoKey ='testautomation-maven-virtual'
+                username='artifcatoryuserr'
+                pasword='artifcatoryPassword'
+                maven=true
+            }
+        }
+    }
+    task sourceJar(tye:jar, depends:classes){
+     classifier = 'sources'
+     from sourceSets.main.allSource
+
+    }
+
+    publishing{
+        publications{
+            mavenJava(mavenPublication){
+                groupId 'com.veyyonOrg.at'
+                from components.java
+                artifcats(sourceJar){
+                    classifier(sources)
+                }
+            }
+        }
+    }
+    def suite = project.hasProperty("suite")
+    def env = project.hasProperty("env")
+    def dbEnv = project.hasProperty("dbEnv")
+
+    task updateEnvProps{
+        println 'In updatEnvProps'
+        ant.propertyfile('src/test/resources/environmentProperties'){
+            if(env){
+                entry(key:"env", value: project.property("env"))
+            }
+            if(dbEnv){
+                entry(key:"dbEnv", value: project.property("dbEnv"))
+            }
+        }
+    }
+    test{
+        dependsOn 'updateEnvProps'
+        useTestNG(){
+            testLogging{
+                events "PASSED", "FAILED"
+            }
+        }
+
+        if(suite){
+            def testSuite = project.property("suite")
+            if(testSuite == 'module1'){
+                suite = 'src/test/suites/module1.xml'
+            }
+            if(testSuite == 'module2'){
+                suite = 'src/test/suites/module2.xml'
+            }
+            if(testSuite == 'smoke'){
+                suite = 'src/test/suites/smokesuite.xml'
+            }
+        }
+    }
+}

@@ -11,14 +11,16 @@
         <module name="APAutomation-Common-Java" />
         <module name="Test-Common-Java" />
         <module name="APIAutomation-Common-Java" />
+        <module name="API-CommonTest-Java" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="APAutomation-Common-Java" options="--add-modules java.base" />
+      <module name="API-CommonTest-Java" options="--add-modules java.sql,java.base" />
       <module name="APIAutomation-Common-Java" options="--add-modules java.base,java.sql" />
-      <module name="Test-Common-Java" options="--add-modules java.base,java.sql" />
+      <module name="Test-Common-Java" options="--add-modules java.sql,java.base" />
     </option>
   </component>
 </project>

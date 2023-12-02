@@ -1,0 +1,12 @@
+#!groovy
+#! define the variables for building pipelines
+
+library 'pipelines'
+
+test_automation_serivce
+{
+ sonar_project = API-CommonTest-Java
+ stop_on_qg_failure = true
+ notify_email = elanog@veyyon.org
+ compile = "y"
+}

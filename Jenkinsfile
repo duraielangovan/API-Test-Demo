@@ -1,25 +1,47 @@
-pipeline{
-    agent any
-    stages {
-        stage("build")
+//declarative programming using predefined keywords
+
+echo 'Stating the test'
+
+pipeline
+{
+ agent any
+
+
+ stages
+ {
+   stage('build')
+   {
+     steps 
+     {
+     	echo "Build number ${env.BUILD_ID} is running  on ${env.JENKINS_URL}"
+     }     
+   }
+   
+   stage('test')
+   {
+    when{
+        
+        expression
         {
-         steps{
-            echo "building phase"
-         }
+            
+            params.TEST_ENV !='qa'
         }
-
-      stage("test")
-             {
-                   steps{
-                      echo "testing phase"
-         }
-                  }
-
-                      stage("deploy")
-                               {
-                                     steps{
-                                        echo "deployment phase"
-                           }
-                                    }
     }
+
+    steps 
+     {
+     	echo "Test phase for the environment : ${params.TEST_ENV}"  	
+     }     
+   }
+   
+   stage('Deploy')
+   {
+     steps 
+     {
+     	echo "Status of current build is ${currentBuild.result}"
+     }     
+   }  
+   
+ }
+
 }
