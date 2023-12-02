@@ -25,8 +25,7 @@ environment{
    {
      steps 
      {
-     	sh "mvn -version"
-     	sh "mvn clean"
+     	sh "mvn -version"     
      }     
    }
    
@@ -43,8 +42,8 @@ environment{
 
     steps 
      {
-     	echo "Test phase for the environment : ${params.TEST_ENV}"  
-     	sh "mvn install"	
+     	echo "Test phase for the environment : ${params.TEST_ENV}" 
+     	
      }     
    }
    
@@ -55,7 +54,6 @@ environment{
      	echo "Status of current build is ${currentBuild.result}"
      }     
    }     
- }
- 
+ } 
 
 }
