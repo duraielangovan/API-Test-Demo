@@ -4,16 +4,12 @@ echo 'Stating the test'
 
 pipeline
 {
-environment{
-    
-    JAVA_TOOL_OPTIONS = "-Duser.home = /var/maven"
-  }
 
  agent {
      
      docker{
          
-         image 'maven:3.8.7-openjdk-18'         
+         image 'maven:3.8.7-openjdk-18'      
      }
 
  }
@@ -24,7 +20,6 @@ environment{
    {
      steps 
      {
-     	echo "Build number ${env.BUILD_ID} is running  on ${env.JENKINS_URL}"
      	sh "mvn -version"
      	sh "mvn clean"
      }     
@@ -56,12 +51,6 @@ environment{
      }     
    }     
  }
- post {
-     
-     always{
-         
-         cleanWs()
-     }
- }
+ 
 
 }
