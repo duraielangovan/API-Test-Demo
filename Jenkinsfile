@@ -31,8 +31,7 @@ pipeline
                             
        success {
        
-       bat "mkdir test-output\reports"
-       	
+              	
           publishHTML([
                               allowMissing: false, 
                               alwaysLinkToLastBuild: false, 
