@@ -31,14 +31,14 @@ pipeline
                             
        success {
        
-       bat "mkdir test-output/reports"
+       bat "mkdir test-output\reports"
        	
           publishHTML([
                               allowMissing: false, 
                               alwaysLinkToLastBuild: false, 
                               keepAll: true, 
                               includes: '**/*.png',
-                              reportDir: 'test-output/reports', 
+                              reportDir: 'test-output\reports', 
                               reportFiles: 'Spark.html', 
                               reportName: 'ExtentReport', 
                               reportTitles: 'JENKINSDEMO', 
