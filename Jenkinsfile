@@ -34,11 +34,12 @@ pipeline
           publishHTML([
                               allowMissing: false, 
                               alwaysLinkToLastBuild: false, 
-                              keepAll: false, 
-                              reportDir: 'Reports', 
+                              keepAll: true, 
+                              includes: '**/*.png',
+                              reportDir: 'Reports/', 
                               reportFiles: 'Spark.html', 
-                              reportName: "ExtentReport${env.JOB_NAME}", 
-                              reportTitles: '', 
+                              reportName: 'ExtentReport', 
+                              reportTitles: 'JENKINSDEMO', 
                               useWrapperFileDirectly: true])
                 }
             }
