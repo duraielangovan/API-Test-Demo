@@ -27,10 +27,8 @@ pipeline
      	bat "mvn -D clean install"
      	
      }  
-     post {       
-                 
-                // If Maven was able to run the tests, even if some of the test
-                // failed, record the test results and archive the jar file.               
+     post {          
+                            
        success {
           publishHTML([
                               allowMissing: false, 
@@ -43,8 +41,7 @@ pipeline
                               useWrapperFileDirectly: true])
                 }
             }
-        
+       
    }
   }   
- 
 }
