@@ -30,7 +30,7 @@ pipeline
      post {          
                             
        success {
-       			bat "mkdir -p Reports 2>1"
+       			bat "mkdir -p Reports" || 'true'
           publishHTML([
                               allowMissing: false, 
                               alwaysLinkToLastBuild: false, 
