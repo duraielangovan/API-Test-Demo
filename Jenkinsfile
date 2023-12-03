@@ -5,55 +5,45 @@ echo 'Stating the test'
 pipeline
 {
 
-environment{
-    
-    JAVA_TOOL_OPTIONS = "-Duser.home = /var/maven"
-  }
-
- agent {
-     
-     docker{
-         
-         image 'maven:3.8.7-openjdk-18'      
-     }
-
- }
-
+ agent any
+ 
  stages
  {
-   stage('build')
+   stage('Build')
    {
      steps 
      {
-     	sh "mvn -version"     
+     	bat "mvn -version" 
+     	bat "mvn clean"    
      }     
    }
    
-   stage('test')
+   stage('Test')
    {
-    when{
-        
-        expression
-        {
-            
-            params.TEST_ENV !='prod'
-        }
-    }
 
     steps 
      {
      	echo "Test phase for the environment : ${params.TEST_ENV}" 
+     	bat "mvn -D clean install"
      	
      }     
    }
    
-   stage('Deploy')
-   {
-     steps 
-     {
-     	echo "Status of current build is ${currentBuild.result}"
-     }     
-   }     
- } 
-
+    post {       
+                 
+                // If Maven was able to run the tests, even if some of the test
+                // failed, record the test results and archive the jar file.               
+            success {
+                  publishHTML([
+                              allowMissing: false, 
+                              alwaysLinkToLastBuild: false, 
+                              keepAll: false, 
+                              reportDir: 'Reports', 
+                              reportFiles: 'Spark.html', 
+                              reportName: "ExtentReport${env.JOB_NAME}", 
+                              reportTitles: '', 
+                              useWrapperFileDirectly: true])
+                }
+            }
+	}
 }

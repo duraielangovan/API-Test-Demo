@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 public class PlayersServiceClient extends ServiceBaseClient{
 
     String GET_PLAYER_PATH = "/rest/api/player/{{id}}";
+   
     public Response getPlayer(String url, String id, Headers headers){
         url = (url+GET_PLAYER_PATH).replace("{{id}}",id);
         return this.executeGetCall(url,headers);

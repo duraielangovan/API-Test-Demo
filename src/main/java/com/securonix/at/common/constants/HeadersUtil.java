@@ -9,8 +9,8 @@ import java.util.Objects;
 
 public class HeadersUtil {
 
-    public static final String XML_HEADERS = "application/json";
-    public static final String JSON_HEADERS = "application/xml";
+    public static final String JSON_HEADERS = "application/json";
+    public static final String XML_HEADERS = "application/xml";
     public static final String CONTENT_TYPE = "Content-type";
     public static final String X_APPLICATION = "X-Application-type";
     public static final String X_SERVER = "X-SERVER";
@@ -18,9 +18,9 @@ public class HeadersUtil {
 
 
 
-    public static Headers getHeaders(String inContentType, String inXApplication,String inXServer)
+    public static Headers getHeaders(String inContentType, String inXServer)
     {
-        return new Headers(getHeadersList(inContentType,inXApplication, inXServer));
+        return new Headers(getHeadersList(inContentType, inXServer));
     }
     public static Headers addAdditionalHeader(Headers inHeaders, String inKey, String inValue)
     {
@@ -30,7 +30,7 @@ public class HeadersUtil {
         return new Headers(lstHeader);
     }
 
-    private static List<Header> getHeadersList(String inContentType, String inXapplication,String inXServer)
+    private static List<Header> getHeadersList(String inContentType, String inXServer)
     {
         List<Header> lstHeader = new ArrayList<>();
 
@@ -38,11 +38,7 @@ public class HeadersUtil {
                 ? XML_HEADERS : JSON_HEADERS;
         lstHeader.add(new Header(CONTENT_TYPE, contentType));
         lstHeader.add(new Header(ACCEPT, contentType));
-
-        if(!Objects.equals(inXapplication, null))
-        {
-            lstHeader.add(new Header(X_APPLICATION, inXapplication));
-        }
+        
         if(!Objects.equals(inXServer, null))
         {
             lstHeader.add(new Header(X_SERVER, inXServer));;
