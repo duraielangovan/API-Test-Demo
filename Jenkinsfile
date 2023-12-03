@@ -26,15 +26,13 @@ pipeline
      	echo "Test phase for the environment : ${params.TEST_ENV}" 
      	bat "mvn -D clean install"
      	
-     }     
-   }
-   
-    post {       
+     }  
+     post {       
                  
                 // If Maven was able to run the tests, even if some of the test
                 // failed, record the test results and archive the jar file.               
-            success {
-                  publishHTML([
+       success {
+          publishHTML([
                               allowMissing: false, 
                               alwaysLinkToLastBuild: false, 
                               keepAll: false, 
@@ -45,5 +43,8 @@ pipeline
                               useWrapperFileDirectly: true])
                 }
             }
-	}
+        
+   }
+  }   
+ 
 }
