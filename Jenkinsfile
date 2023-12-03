@@ -30,13 +30,15 @@ pipeline
      post {          
                             
        success {
+       
+       bat "mkdir test-output/reports"
        	
           publishHTML([
                               allowMissing: false, 
                               alwaysLinkToLastBuild: false, 
                               keepAll: true, 
                               includes: '**/*.png',
-                              reportDir: 'Reports/', 
+                              reportDir: 'test-output/reports', 
                               reportFiles: 'Spark.html', 
                               reportName: 'ExtentReport', 
                               reportTitles: 'JENKINSDEMO', 
